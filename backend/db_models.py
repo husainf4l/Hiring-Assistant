@@ -71,3 +71,4 @@ class ChatSession(Base):
     # Relationships
     job_post = relationship("JobPost", foreign_keys=[job_post_id])
 
+

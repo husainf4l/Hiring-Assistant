@@ -409,3 +409,4 @@ SPECIFIC INSTRUCTIONS FOR {section_type.upper()}:
 
 Return the formatted content in the same format as requested (JSON array for lists, string for text)."""
 
+

@@ -24,21 +24,21 @@ export default function ChatPanel({ messages, onSendMessage, isLoading }: ChatPa
     <div className="chat-panel">
       <div className="chat-header">
         <h2>AI Hiring Assistant</h2>
-        <p className="subtitle">Ask me about your job requirements</p>
+        <p className="subtitle">Answer questions about your job requirements</p>
       </div>
 
       <div className="chat-messages">
         {messages.length === 0 ? (
           <div className="empty-state">
-            <p>👋 Hi! I'm your AI hiring assistant.</p>
-            <p>I'll ask you a few questions about the job, and we'll create a professional LinkedIn post together.</p>
-            <p>Ready to get started?</p>
+            <p>Welcome to the AI Hiring Assistant</p>
+            <p>I'll guide you through a series of questions about the job, and together we'll create a professional job posting.</p>
+            <p>Let's get started.</p>
           </div>
         ) : (
           messages.map((message, index) => (
             <div key={index} className={`message ${message.role}`}>
               <div className="message-avatar">
-                {message.role === 'user' ? '👤' : '🤖'}
+                {message.role === 'user' ? 'You' : 'AI'}
               </div>
               <div className="message-content">
                 <div className="message-text">{message.content}</div>
@@ -48,7 +48,7 @@ export default function ChatPanel({ messages, onSendMessage, isLoading }: ChatPa
         )}
         {isLoading && (
           <div className="message assistant">
-            <div className="message-avatar">🤖</div>
+            <div className="message-avatar">AI</div>
             <div className="message-content">
               <div className="typing-indicator">
                 <span></span>
@@ -80,4 +80,5 @@ export default function ChatPanel({ messages, onSendMessage, isLoading }: ChatPa
     </div>
   );
 }
+
 

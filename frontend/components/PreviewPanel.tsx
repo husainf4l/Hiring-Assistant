@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { JobPost } from '@/types';
 import { savePost } from '@/lib/api';
 
@@ -17,6 +18,7 @@ export default function PreviewPanel({
   onRegenerateSection,
   sessionId 
 }: PreviewPanelProps) {
+  const router = useRouter();
   const [isSaving, setIsSaving] = useState(false);
   const [isRegenerating, setIsRegenerating] = useState<string | null>(null);
   
@@ -34,6 +36,11 @@ export default function PreviewPanel({
       // For now, use a default user_id. In production, get from auth
       await savePost(sessionId, 1);
       alert('Post saved successfully!');
+      
+      // Redirect to dashboard after successful save
+      setTimeout(() => {
+        router.push('/dashboard');
+      }, 500);
     } catch (error) {
       console.error('Failed to save post:', error);
       alert('Failed to save post. Please try again.');
