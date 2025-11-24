@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'HR Hiring Assistant',
-  description: 'AI-powered hiring post generator',
+  title: 'Hiring Assistant - AI-Powered Job Matching',
+  description: 'Modern AI-powered hiring assistant for job matching and candidate discovery',
 }
 
 export default function RootLayout({
@@ -13,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="app-body">
+        {children}
+      </body>
     </html>
   )
 }

@@ -7,9 +7,23 @@ interface ChatPanelProps {
   messages: ChatMessage[];
   onSendMessage: (message: string) => void;
   isLoading?: boolean;
+  title?: string;
+  subtitle?: string;
+  emptyStateMessages?: string[];
 }
 
-export default function ChatPanel({ messages, onSendMessage, isLoading }: ChatPanelProps) {
+export default function ChatPanel({ 
+  messages, 
+  onSendMessage, 
+  isLoading,
+  title = "AI Hiring Assistant",
+  subtitle = "Answer questions about your job requirements",
+  emptyStateMessages = [
+    "Welcome to the AI Hiring Assistant",
+    "I'll guide you through a series of questions about the job, and together we'll create a professional job posting.",
+    "Let's get started."
+  ]
+}: ChatPanelProps) {
   const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -23,16 +37,16 @@ export default function ChatPanel({ messages, onSendMessage, isLoading }: ChatPa
   return (
     <div className="chat-panel">
       <div className="chat-header">
-        <h2>AI Hiring Assistant</h2>
-        <p className="subtitle">Answer questions about your job requirements</p>
+        <h2>{title}</h2>
+        <p className="subtitle">{subtitle}</p>
       </div>
 
       <div className="chat-messages">
         {messages.length === 0 ? (
           <div className="empty-state">
-            <p>Welcome to the AI Hiring Assistant</p>
-            <p>I'll guide you through a series of questions about the job, and together we'll create a professional job posting.</p>
-            <p>Let's get started.</p>
+            {emptyStateMessages.map((msg, idx) => (
+              <p key={idx}>{msg}</p>
+            ))}
           </div>
         ) : (
           messages.map((message, index) => (

@@ -53,6 +53,12 @@ def get_db():
 
 def init_db():
     """Initialize database - create all tables"""
+    # Import models to ensure they're registered
+    try:
+        from . import db_models  # noqa
+    except ImportError:
+        import db_models  # noqa
+    
     Base.metadata.create_all(bind=engine)
 
 

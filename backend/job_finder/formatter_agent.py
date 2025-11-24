@@ -1,7 +1,7 @@
-""
-"Formatter Agent for Job Finder recommendations."
-"Phase 3: AI Logic scaffolding"
-""
+"""
+Formatter Agent for Job Finder recommendations.
+Phase 3: AI Logic scaffolding
+"""
 
 from __future__ import annotations
 

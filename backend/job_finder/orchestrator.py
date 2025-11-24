@@ -6,7 +6,7 @@ Phase 3: AI Logic scaffolding
 from __future__ import annotations
 
 import uuid
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
 
 from .interview_agent import InterviewAgent
 from .matching_agent import MatchingAgent
@@ -22,11 +22,12 @@ from .models import (
 class JobFinderOrchestrator:
     """Coordinates the interview, matching, and formatting agents."""
 
-    def __init__(self) -> None:
+    def __init__(self, db: Optional[Any] = None) -> None:
         self.sessions: Dict[str, JobFinderSession] = {}
         self.interview_agent = InterviewAgent()
         self.matching_agent = MatchingAgent()
         self.formatter_agent = FormatterAgent()
+        self.db = db
 
     def start_session(self) -> JobFinderSession:
         session_id = str(uuid.uuid4())
@@ -57,9 +58,11 @@ class JobFinderOrchestrator:
         session.is_profile_complete = bool(result["is_complete"])
 
         if session.is_profile_complete:
+            # Fetch jobs from database, with fallback to sample jobs
+            jobs = self.matching_agent.get_jobs_from_database(self.db)
             raw_recs = self.matching_agent.match_jobs(
                 session.seeker_profile,
-                SAMPLE_JOB_LISTINGS,
+                jobs,
             )
             formatted = self.formatter_agent.format_recommendations(raw_recs)
             session.recommendations = formatted
