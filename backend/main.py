@@ -79,9 +79,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 try:
     from routes import router
+    from job_finder.routes import router as job_finder_router
+
     app.include_router(router, prefix="/api", tags=["api"])
+    app.include_router(job_finder_router, prefix="/api", tags=["job-finder"])
     print("✓ API routes loaded successfully")
-    print(f"✓ Registered {len(router.routes)} API routes")
 except ImportError as e:
     print(f"ERROR: Could not import routes: {e}")
     import traceback

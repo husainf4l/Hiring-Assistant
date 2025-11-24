@@ -33,4 +33,34 @@ export interface ChatSession {
   isComplete: boolean;
 }
 
+export interface JobSeekerProfile {
+  id?: string;
+  currentRole?: string;
+  skills: string[];
+  yearsExperience?: number;
+  preferredTitles: string[];
+  preferredLocations: string[];
+  workType?: 'remote' | 'onsite' | 'hybrid';
+  industries: string[];
+  salaryExpectation?: string;
+}
+
+export interface JobRecommendation {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  requiredSkills: string[];
+  matchPercentage: number;
+  explanation: string;
+  workType: string;
+  salaryRange: string;
+}
+
+export interface FilterOption {
+  type: 'remote' | 'onsite' | 'hybrid' | 'salary' | 'skill' | 'title';
+  value: string;
+  active: boolean;
+}
+
 

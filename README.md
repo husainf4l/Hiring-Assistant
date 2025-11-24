@@ -90,6 +90,8 @@ The application will be available at:
 - **Live Template Preview**: Real-time updates as you answer questions
 - **Professional Templates**: LinkedIn-style job post formatting
 - **Multi-Agent System**: Specialized agents for different aspects of job creation
+- **Job Finder Prototype**: Separate `/job-finder` workspace with live chat + job cards
+- **Job Finder API**: `/api/job-finder/*` endpoints for chat + recommendations
 
 ### Technical Features
 - **FastAPI Backend**: High-performance Python web framework
@@ -168,4 +170,5 @@ When the backend is running, visit:
 - **API Documentation**: http://localhost:8000/docs (when backend is running)
 - **Rolevate Integration Guide**: `docs/ROLEVATE_API_GUIDE.md`
 - **Implementation Report**: `docs/ROLEVATE_IMPLEMENTATION_REPORT.md`
+- **Job Finder Blueprint**: `backend/JOB_FINDER_PROJECT.md`
 
